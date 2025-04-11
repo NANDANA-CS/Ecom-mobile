@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add</title>
+    <link rel="stylesheet" href="/css/update.css">
+    
+</head>
+<body>
+    <div class="nav">
+        <div class="logo"><h1 class="head">MobileWorld</h1></div>
+        <div class="sbar"><input type="search" name="sbar" id="sbar" placeholder="Search your favourite Mobiles"></div>
+        <a href="cart"><div class="cart">cart</div></a>
+    </div>
+    <form onsubmit="submitData(event)">
+        <label for="mobname">Mobile Name</label>
+        <input type="text" name="mobname" id="mobname" class="mobname"><br><br>
+        <label for="brandname">Brand Name</label>
+        <input type="text" name="brandname" id="brandname" class="brandname"><br><br>
+        <label for="ram">Mobile RAM</label>
+        <input type="text" name="ram" id="ram" class="ram"><br><br>
+        <label for="storage">Storage</label>
+        <input type="text" name="storage" id="storage" class="storage"><br><br>
+        <label for="color">Colour</label>
+        <input type="text" name="color" id="color"><br><br>
+        <label for="quantity">Quantity</label>
+        <input type="text" name="quantity" id="quantity"><br><br>
+        <label for="images">Images</label>
+        <input type="file" name="images" id="images" multiple>
+        <div id="previewimages" class="previewimages" style="display: flex; flex-wrap: wrap;"></div><br><br>
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price"><br><br>
+        <input type="submit" value="Submit" >
+    </form>
+    <script src="/js/update.js" ></script>
+</body>
+</html>
