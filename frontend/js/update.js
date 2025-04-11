@@ -6,10 +6,10 @@ let i = 0
 
 async function loaddata() {
     try {
-        let res = await fetch(`http://localhost:4000/api/mobiles/loaddata/${id}`)
+        let res = await fetch(`http://localhost:4000/api/mobiles/preview/${id}`)
         let data = await res.json()
 
-        document.getElementById("mobname").value = data.mobilename
+        document.getElementById("mobname").value = data.mobname
         document.getElementById("brandname").value = data.brandname
         document.getElementById("ram").value = data.ram
         document.getElementById("storage").value = data.storage
@@ -18,10 +18,10 @@ async function loaddata() {
         document.getElementById("quantity").value = data.quantity
 
         imgs=data.images
-        i=index+1
+        let preview=""
 
         data.images.forEach((img) => {
-            preimage+= `<img src="${img}" alt="Preview" style="width:200px;">`
+            preview+= `<img src="${img}" alt="Preview" style="width:200px;">`
             document.getElementById("previewimages").innerHTML = preview
 
         });
@@ -37,7 +37,17 @@ loaddata()
 async function submitData(event){
     event.preventDefault()
     console.log("Inside fuv");
-    
+    // const updatedData = {
+    //     id: id, 
+    //     mobname: "...",
+    //     brandname: "...",
+    //     ram:"..",
+    //     storage:"..",
+    //     color:"..",
+    //     quantity:".."
+
+
+    // }
     content={
         mobname:document.getElementById("mobname").value,
         brandname:document.getElementById("brandname").value,
@@ -52,14 +62,14 @@ async function submitData(event){
     
     try {
         const res=await fetch("http://localhost:4000/api/mobiles/update",{
-            method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(content)
+            method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(updatedData)
         })
         console.log(res);
         
         const data=await res.json()
         console.log(data);
         if (res.status===201) {
-            alert("Sucessfully submitted")
+            alert("Sucessfully updated")
             window.location.href="/"
             console.log("h9hihuiuh");
             
@@ -69,7 +79,7 @@ async function submitData(event){
         
     } catch (error) {
         console.log(error);
-        alert("not submitted")
+        alert("not updated yet")
     }
     
 }

@@ -53,11 +53,11 @@ export const deletedata=async (req,res) => {
     }
 }
 
-export const updatedata=async (req,res) => {
+export const update=async (req,res) => {
     try {
-        const { id } = req.params
-        let { mobname, brandname, ram, storage, color, quantity, images, price } = req.body
-        const data=await mobSchema.findByIdAndDelete(
+        // const { id } = req.params
+        let { id, mobname, brandname, ram, storage, color, quantity, images, price } = req.body
+        const data=await mobSchema.findByIdAndUpdate(
             id,
             { mobname, brandname, ram, storage, color,quantity, images, price },
             { new: true }
@@ -65,6 +65,7 @@ export const updatedata=async (req,res) => {
         res.status(200).send(data)
     } catch (error) {
         console.log(error);
+        res.status(500).send("update failed")
         
     }
 }

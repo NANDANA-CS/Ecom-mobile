@@ -17,11 +17,10 @@ async function previewData() {
         btns=`
         <div class="btns">
             <div class="addtocart">Add to Cart</div>
-            <div class="buy">Buy</div>
         </div>`
 
         actionbtns=`
-        <div class="acbtns"><a href="/update?id=${data._id}"><div>Edit</div></a>
+        <div class="acbtns"><a href="/update?id=${id}"><div>Edit</div></a>
         <div onclick="deletedata()" class="delete">Delete</div></div>`
 
         document.getElementById("actions").innerHTML=actionbtns
