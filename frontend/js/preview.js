@@ -1,7 +1,7 @@
 const params=new URLSearchParams(window.location.search)
 let id=params.get("id")
 console.log(id);
-
+products=null
 async function previewData() {
     try {
         let res=await fetch(`http://localhost:4000/api/mobiles/preview/${id}`)
@@ -16,7 +16,7 @@ async function previewData() {
         })
         btns=`
         <div class="btns">
-            <div class="addtocart">Add to Cart</div>
+           <button onclick="addToCart()">Add to Cart</button>
         </div>`
 
         actionbtns=`
@@ -33,7 +33,16 @@ async function previewData() {
         <p class="color">$${data.color}</p>
         <p class="quantity">$${data.quantity}</p>`
 
-
+        products = {
+            mobname: data.mobname,
+            brandname:  data.brandname,
+            ram:  data.ram,
+            storage:  data.storage,
+            color:  data.color,
+            images:  data.images[0],
+            price:  data.price,
+            quantity: 1
+        }
 
         
     } catch (error) {
@@ -45,7 +54,7 @@ previewData()
 
 function preimage(img){
     image=img.src
-    document.getElementById("images").innerHTML = `<img src=${image}> ${btn}`
+    document.getElementById("images").innerHTML = `<img src=${image}> ${btns}`
 
 }
 
@@ -63,9 +72,36 @@ async function deletedata() {
         }
         
     } catch (error) {
-        console.log(error);
-        
+        console.log(error)
     }
 }
 
+async function addToCart() {
+    try {
+        const res = await fetch("http://localhost:4000/api/cart/addcart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(products)
+        });
+        console.log(res);
+        const data = await res.json()
+        
+        if(res.status === 201) {
+            alert("Product added to cart successfully!")
+            window.location.href="/cart.html"
+        } else {
+            alert("Failed to add product to cart")
+        }
 
+
+        // if (!res.ok) {
+        //     console.error("server responded with",data);
+        //     throw new Error(data.error||"failed to add cart");
+            
+            
+        // }
+    } catch (error) {
+        console.error("Error adding to cart:", error)
+        alert(error.message)
+    }
+}

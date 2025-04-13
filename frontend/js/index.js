@@ -3,17 +3,17 @@ async function loadData() {
        const res=await fetch("http://localhost:4000/api/mobiles/load") 
        const data=await res.json()
        console.log(data);
-       let body=""
+       let sr=""
        data.forEach(ele => {
-        body+=`
+        sr+=`
         <a href="/preview?id=${ele._id}"><div class="card">
-            <img src="${ele.images[0]}" alt="loading..">
+            <div class="thumb"><img src="${ele.images[0]}" alt="loading.."></div>
             <p class="brand">${ele.brandname}</p>
             <p class="mobile">${ele.mobname}</p>
             <p class="price">${ele.price}</p>
         <div></a>`
        });
-       document.getElementById("container").innerHTML=body
+       document.getElementById("container").innerHTML=sr
        
     } catch (error) {
         console.log(error);

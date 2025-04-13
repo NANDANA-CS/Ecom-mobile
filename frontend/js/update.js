@@ -45,8 +45,6 @@ async function submitData(event){
     //     storage:"..",
     //     color:"..",
     //     quantity:".."
-
-
     // }
     content={
         mobname:document.getElementById("mobname").value,
@@ -62,13 +60,15 @@ async function submitData(event){
     
     try {
         const res=await fetch("http://localhost:4000/api/mobiles/update",{
-            method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(updatedData)
+            method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({id,...content})
         })
         console.log(res);
         
         const data=await res.json()
         console.log(data);
-        if (res.status===201) {
+        
+        console.log(data);
+        if (res.status===200) {
             alert("Sucessfully updated")
             window.location.href="/"
             console.log("h9hihuiuh");
