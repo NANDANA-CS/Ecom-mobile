@@ -6,12 +6,12 @@ async function loadData() {
        let sr=""
        data.forEach(ele => {
         sr+=`
-        <a href="/preview?id=${ele._id}"><div class="card">
+        <a href="/preview?id=${ele._id}" class="card">
             <div class="thumb"><img src="${ele.images[0]}" alt="loading.."></div>
             <p class="brand">${ele.brandname}</p>
             <p class="mobile">${ele.mobname}</p>
             <p class="price">${ele.price}</p>
-        <div></a>`
+        </a>`
        });
        document.getElementById("container").innerHTML=sr
        

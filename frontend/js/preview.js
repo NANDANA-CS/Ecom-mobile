@@ -20,18 +20,20 @@ async function previewData() {
         </div>`
 
         actionbtns=`
-        <div class="acbtns"><a href="/update?id=${id}"><div>Edit</div></a>
-        <div onclick="deletedata()" class="delete">Delete</div></div>`
+        <div class="acbtns">
+            <a href="/update?id=${id}"><div class="edit">Edit</div></a>
+            <div onclick="deletedata()" class="delete">Delete</div>
+        </div>`
 
         document.getElementById("actions").innerHTML=actionbtns
         document.getElementById("thumbnail").innerHTML=simgs
         document.getElementById("images").innerHTML=`<img src="${data.images[0]}">${btns}`
         document.getElementById("content").innerHTML = `
-        <p class="brand">${data.brandname}</p>
-        <p class="title">${data.mobname}</p>
-        <p class="price">$${data.price}</p>
-        <p class="color">$${data.color}</p>
-        <p class="quantity">$${data.quantity}</p>`
+        <p class="brand">Brand : ${data.brandname}</p>
+        <p class="title">Mobile : ${data.mobname}</p>
+        <p class="color">Colour : ${data.color}</p>
+        <p class="quantity">Quantity : ${data.quantity}</p>
+        <p class="price">Price : ${data.price}</p>`
 
         products = {
             mobname: data.mobname,

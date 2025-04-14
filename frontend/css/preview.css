@@ -1,107 +1,262 @@
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     background-color: #f4f4f4;
-    padding: 20px;
+    color: #333;
+    min-height: 100vh;
 }
 
-
+/* Navigation Styles */
 .nav {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: #222;
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
     color: white;
-    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav .logo h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.nav .sbar input {
+    padding: 12px 18px;
+    width: 650px;
     border-radius: 10px;
-    margin-bottom: 30px;
-}
-
-.logo .head {
-    font-size: 28px;
-    color: #00d0ff;
-}
-
-
-.sbar input[type="search"] {
-    padding: 10px;
     border: none;
-    border-radius: 8px;
-    width: 600px;
-    font-size: 16px;
+    font-size: 15px;
+    background-color: #e9edf4;
+    transition: all 0.3s ease;
 }
 
-.addbtn, .cart{
-    background-color: #00d0ff;
-    color: white;
+.nav .sbar input:focus {
+    outline: 2px solid #4a90e2;
+    background-color: #fff;
+}
+
+.nav .cart, .nav .addbtn {
+    margin-left: 15px;
+    background: #4a90e2;
     padding: 10px 18px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    transition: 0.3s ease;
-    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.addbtn:hover,.cart:hover {
-    background-color: #009ecb;
+.nav .cart:hover, .nav .addbtn:hover {
+    background-color: #3a78c2;
+    transform: scale(1.05);
 }
+
 a{
     text-decoration: none;
 }
 
-.btns{
-    margin-top: 20px;
+
+/* Mobile Details Section */
+.mobdetails {
     display: flex;
-    gap: 15px; 
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+    height: 100px;
+    justify-content: center;
 }
 
-.addtocart,.buy{
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
+.imagediv {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Thumbnail image */
+.thumbnail {
+    width: 300px;
+    height: 300px;
+    left: 130px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.images {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    gap: 10px;
+    position: absolute; /* Position images inside the thumbnail */
+    top: 170px; /* Adjust this to control the vertical position */
+    left: 10px; /* Adjust this to control the horizontal position */
+}
+
+.images img {
+    width: 60px;
+    height: 60px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.2s ease;
-    background-color: #009ecb;
-    color: white;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
+.images img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Content Section */
+
+
+
+.content {
+    flex: 2;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.content .brand, .content .title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.content .price {
+    color: #4a90e2;
+    font-size: 22px;
+}
+
+.content .color, .content .quantity {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
 .acbtns {
-    margin-top: 20px;
     display: flex;
-    gap: 15px;
+    
 }
 
-.edit, .delete {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+.acbtns div {
+    background-color:#4a90e2;
+    padding: 10px 20px;
+    color: white;
     font-size: 14px;
-    transition: 0.2s ease;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.edit {
-    background-color: #2196f3;
+.acbtns div:hover {
+    background-color: #6399d7;
+}
+
+.acbtns .delete {
+    background-color: #e02323;
+    height: 40px;
+    
+}
+
+.acbtns .delete:hover{
+    background-color: #de7070;
+   
+}
+
+#addcart {
+    margin-top: 15px;
+}
+
+.btns button {
+    padding: 10px 20px;
+    background-color: #4caf50;
     color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-.delete{
-    background-color: #f44336;
-    color: white;
+.btns button:hover {
+    background-color: #388e3c;
 }
 
-.edit:hover {
-    background-color: #1976d2;
-}
-.delete:hover {
-    background-color: #d32f2f;
+
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .sbar input {
+        width: 100%;
+    }
+
+    .mobdetails {
+        flex-direction: column;
+    }
+
+    .imagediv {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .acbtns div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .images img {
+        width: 60px;
+        height: 60px;
+        margin: 5px 0;
+    }
 }
